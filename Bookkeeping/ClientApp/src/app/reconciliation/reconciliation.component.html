@@ -3,10 +3,12 @@
   <h1>Reconciliation</h1>
 </div>
 <div class="container">
-  <div class="row">
-    <div class="form-group">
-      <label for="sel1">Income/Expense:</label>
-      <select class="form-control" id="sel1" name="sellist1">
+  <div>
+    <div class="form-group row">
+      <div class="col-md-2">
+        <label for="IncomeExpenseType">Income/Expense:</label>
+      </div>
+      <select class="form-control col-md-4" id="IncomeExpenseType" name="IncomeExpense">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -14,9 +16,11 @@
       </select>
       <br>
     </div>
-    <div class="form-group">
-      <label for="sel1">Item Name:</label>
-      <select class="form-control" id="sel1" name="sellist1">
+    <div class="form-group row">
+      <div class="col-md-2">
+        <label for="ItemName">Item Name:</label>
+      </div>
+      <select class="form-control col-md-4" id="ItemName" name="ItemNames">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -24,22 +28,28 @@
       </select>
       <br>
     </div>
-    <div class="form-group">
-      <label for="usr">Amount:</label>
-      <input type="text" class="form-control" id="usr">
+    <div class="form-group row">
+      <div class="col-md-2">
+        <label for="usr">Amount:</label>
+      </div>
+      <input type="number" required class="form-control col-md-4" id="usr">
     </div>
     <!--<div class="form-group">
-      <div class="col-xs-12 col-12 col-md-4 form-group">
+      <div class="col-xs-12 col-12 col-md-2 form-group">
         <input type="text"
                class="form-control"
                [bsConfig]="bsConfig"
                #dp="bsDatepicker"
                bsDatepicker [(bsValue)]="datePickerValue">
       </div>
-      <div class="col-xs-12 col-12 col-md-3 form-group">
+      <div class="col-xs-12 col-12 col-md-2 form-group">
         <button class="btn btn-success" (click)="dp.toggle()" type="button">Date Picker</button>
       </div>
     </div>-->
-      <button type="submit" class="btn btn-primary">Submit</button>
+    <div>      
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-danger">Cancel</button>
+      </div>
+    
     </div>
   </div>
