@@ -26,6 +26,7 @@ namespace Bookkeeping
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+         
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory

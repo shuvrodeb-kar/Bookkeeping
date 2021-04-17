@@ -21,7 +21,6 @@ namespace Bookkeeping.Controllers
         }
 
         [HttpGet]
-        [Route("Controllers/ReconciliationItem/GetReconciliationItems")]
         public async Task<IEnumerable<ReconciliationItem>> GetReconciliationItems()
         {
             return await repoReconciliationItem.GetAll();
