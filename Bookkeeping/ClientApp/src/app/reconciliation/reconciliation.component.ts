@@ -38,7 +38,8 @@ export class ReconciliationComponent implements OnInit  {
 
     this._bookkeepingService.getReconciliationItem().subscribe(result => {
       this.reconciliationItems = result;
-      this.itemList = _.where(this.reconciliationItems, { incomeExpenseType: IncomeExpense.Income });     
+      this.itemList = _.where(this.reconciliationItems, { incomeExpenseType: IncomeExpense.Income });
+      this.selectedItem = this.itemList[0].id;
     })
   }
 
@@ -51,6 +52,7 @@ export class ReconciliationComponent implements OnInit  {
     this._bookkeepingService.save(this.datePickerValue.getMonth(), this.datePickerValue.getFullYear(), parseInt(this.selectedItem), this.amount).subscribe(result => {
     })
   }
+  
 }
 
 export enum IncomeExpense {
