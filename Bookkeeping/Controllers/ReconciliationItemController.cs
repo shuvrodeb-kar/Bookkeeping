@@ -27,25 +27,15 @@ namespace Bookkeeping.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ReconciliationItem>> GetReconciliationItem(int id)
+        public async Task<ReconciliationItem> GetReconciliationItem(int id)
         {
-            var ReconciliationItem = await repoReconciliationItem.Get(id);
-
-            if (ReconciliationItem == null)
-            {
-                return NotFound();
-            }
+            var ReconciliationItem = await repoReconciliationItem.Get(id);            
             return ReconciliationItem;
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutReconciliationItem(int id, ReconciliationItem ReconciliationItem)
-        {
-            if (id != ReconciliationItem.Id)
-            {
-                return BadRequest();
-            }
-
+        public async Task PutReconciliationItem(int id, ReconciliationItem ReconciliationItem)
+        {            
             try
             {
                 await repoReconciliationItem.Update(ReconciliationItem);
@@ -54,31 +44,21 @@ namespace Bookkeeping.Controllers
             {
                 throw;
             }
-
-            return NoContent();
         }
 
         [HttpPost]
-        public async Task<ActionResult<ReconciliationItem>> PostReconciliationItem(ReconciliationItem ReconciliationItem)
+        public async Task PostReconciliationItem(ReconciliationItem ReconciliationItem)
         {
             await repoReconciliationItem.Add(ReconciliationItem);
-
-            return CreatedAtAction("GetReconciliationItem", new { id = ReconciliationItem.Id }, ReconciliationItem);
         }
 
         // DELETE: api/ReconciliationItems/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteReconciliationItem(int id)
+        public async Task DeleteReconciliationItem(int id)
         {
-            var ReconciliationItem = await repoReconciliationItem.Get(id);
-            if (ReconciliationItem == null)
-            {
-                return NotFound();
-            }
+            var ReconciliationItem = await repoReconciliationItem.Get(id);        
 
             await repoReconciliationItem.Delete(ReconciliationItem);
-
-            return NoContent();
         }
     }
 }

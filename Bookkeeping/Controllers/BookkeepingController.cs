@@ -27,25 +27,15 @@ namespace Bookkeeping.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<BookkeepingInfo>> GetBookkeepingInfo(int id)
+        public async Task<BookkeepingInfo> GetBookkeepingInfo(int id)
         {
-            var BookkeepingInfo = await repoBookkeepingInfo.Get(id);
-
-            if (BookkeepingInfo == null)
-            {
-                return NotFound();
-            }
+            var BookkeepingInfo = await repoBookkeepingInfo.Get(id);            
             return BookkeepingInfo;
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBookkeepingInfo(int id, BookkeepingInfo BookkeepingInfo)
+        public async Task PutBookkeepingInfo(int id, BookkeepingInfo BookkeepingInfo)
         {
-            if (id != BookkeepingInfo.Id)
-            {
-                return BadRequest();
-            }
-
             try
             {
                 await repoBookkeepingInfo.Update(BookkeepingInfo);
@@ -54,31 +44,20 @@ namespace Bookkeeping.Controllers
             {
                 throw;
             }
-
-            return NoContent();
         }
 
         [HttpPost]
-        public async Task<ActionResult<BookkeepingInfo>> PostBookkeepingInfo(BookkeepingInfo BookkeepingInfo)
+        public async Task PostBookkeepingInfo(BookkeepingInfo BookkeepingInfo)
         {
             await repoBookkeepingInfo.Add(BookkeepingInfo);
-
-            return CreatedAtAction("GetBookkeepingInfo", new { id = BookkeepingInfo.Id }, BookkeepingInfo);
         }
 
         // DELETE: api/BookkeepingInfos/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBookkeepingInfo(int id)
+        public async Task DeleteBookkeepingInfo(int id)
         {
-            var BookkeepingInfo = await repoBookkeepingInfo.Get(id);
-            if (BookkeepingInfo == null)
-            {
-                return NotFound();
-            }
-
+            var BookkeepingInfo = await repoBookkeepingInfo.Get(id); 
             await repoBookkeepingInfo.Delete(BookkeepingInfo);
-
-            return NoContent();
         }
     }
 }

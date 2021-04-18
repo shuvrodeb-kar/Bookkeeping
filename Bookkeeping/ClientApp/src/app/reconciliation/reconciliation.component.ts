@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { BookkeepingService } from "../bookkeeping.service";
 import * as _ from 'underscore';
 import { BsDatepickerConfig, BsDatepickerViewMode } from 'ngx-bootstrap/datepicker';
+import { Router } from "@angular/router";
+import { IncomeExpense } from "../bookkeeping.utility";
 
 @Component({
   templateUrl: './reconciliation.component.html',
@@ -24,7 +26,7 @@ export class ReconciliationComponent implements OnInit  {
   selectedItem: any = null;
   amount: number = 0;
 
-  public constructor(private _bookkeepingService: BookkeepingService) {
+  public constructor(private _bookkeepingService: BookkeepingService, private router: Router) {
     this.incomeExpenseTypeEnumKeys = Object.keys(this.incomeExpenseType).filter(f => !isNaN(Number(f)));
     console.log(this.incomeExpenseTypeEnumKeys);
     this.selectedValue = this.incomeExpenseTypeEnumKeys[0];
@@ -48,16 +50,11 @@ export class ReconciliationComponent implements OnInit  {
   }
 
   save(): void {
-    //console.log(this.amount);
     this._bookkeepingService.save(this.datePickerValue.getMonth(), this.datePickerValue.getFullYear(), parseInt(this.selectedItem), this.amount).subscribe(result => {
+      this.router.navigate(['']);
     })
-  }
-  
+  }  
 }
 
-export enum IncomeExpense {
-  Income,
-  Expense
-}
 
 
