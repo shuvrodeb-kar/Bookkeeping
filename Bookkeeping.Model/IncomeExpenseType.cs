@@ -8,7 +8,7 @@ namespace Bookkeeping.Model
 {
     public enum IncomeExpense
     {
-        Income = 1,
-        Expense = 2
+        Income,
+        Expense
     }
 }

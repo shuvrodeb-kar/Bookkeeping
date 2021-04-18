@@ -8,11 +8,8 @@
       <div class="col-md-2">
         <label for="IncomeExpenseType">Income/Expense:</label>
       </div>
-      <select class="form-control col-md-4" id="IncomeExpenseType" name="IncomeExpense">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
+      <select class="form-control col-md-4" id="IncomeExpenseType" name="IncomeExpense" [(ngModel)]="selectedValue" (ngModelChange)="onChange($event)"> 
+        <option *ngFor="let item of incomeExpenseTypeEnumKeys" [value]="item">{{incomeExpenseType[item]}}</option>
       </select>
       <br>
     </div>
@@ -21,10 +18,7 @@
         <label for="ItemName">Item Name:</label>
       </div>
       <select class="form-control col-md-4" id="ItemName" name="ItemNames">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
+        <option *ngFor="let item of itemList" [value]="item">{{item.itemName}}</option>
       </select>
       <br>
     </div>

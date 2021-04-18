@@ -8,13 +8,12 @@ import { throwError as observableThrowError, Observable } from 'rxjs';
 })
 
 export class BookkeepingService {
-  baseUrl: string = null;
-  constructor(private _http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.baseUrl = baseUrl;
+  
+  constructor(private _http: HttpClient) {    
   }
 
   getReconciliationItem(): Observable<any> {
-    return this._http.get<any>(this.baseUrl + 'api/ReconciliationItem').pipe(
+    return this._http.get<any>('api/ReconciliationItem').pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
@@ -31,11 +30,4 @@ export class BookkeepingService {
   }
 
 }
-
-
-//interface ReconciliationItem {
-//  Id: number;
-//  IncomeExpenseType: number;
-//  ItemName: string;
-//}
 
