@@ -26,16 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\bookkeeping.service.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Bookkeeping.DataStore\Bookkeeping.DataStore.csproj" />
     <ProjectReference Include="..\Bookkeeping.Model\Bookkeeping.Model.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\bookkeeping.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

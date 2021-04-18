@@ -21,9 +21,9 @@ import { ReconciliationComponent } from './reconciliation/reconciliation.compone
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'reconciliation', component: ReconciliationComponent },      
-    ])
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'reconciliation', component: ReconciliationComponent },
+], { relativeLinkResolution: 'legacy' })
   ],
   providers: [],
   bootstrap: [AppComponent]
