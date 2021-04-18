@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bookkeeping.DataStore\Bookkeeping.DataStore.csproj" />
+    <ProjectReference Include="..\Bookkeeping.Model\Bookkeeping.Model.csproj" />
+  </ItemGroup>
+
+</Project>

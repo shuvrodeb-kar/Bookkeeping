@@ -26,14 +26,17 @@ namespace Bookkeeping.DataStore
         {
             return await entities.FindAsync(id);
         }
-        public async Task Add(T entity)
+        public async Task<int> Add(T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            entities.Add(entity);
+            await entities.AddAsync(entity);
             await context.SaveChangesAsync();
+            var IdProperty = entity.GetType().GetProperty("Id").GetValue(entity, null);
+            return (int)IdProperty;
+
         }
         public async Task Update(T entity)
         {

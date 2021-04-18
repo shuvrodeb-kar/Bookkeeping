@@ -11,7 +11,7 @@ namespace Bookkeeping.DataStore
     {
         Task<IEnumerable<TEntity>> GetAll();
         Task<TEntity> Get(int id);
-        Task Add(TEntity entity);
+        Task<int> Add(TEntity entity);
         Task Update(TEntity entity);
         Task Delete(TEntity entity);
     }

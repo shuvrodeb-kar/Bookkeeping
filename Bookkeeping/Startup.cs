@@ -1,4 +1,5 @@
 using Bookkeeping.DataStore;
+using Bookkeeping.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,7 +25,8 @@ namespace Bookkeeping
         {
             services.AddDbContext<BookkeepingDataContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddScoped(typeof(IReconciliationService), typeof(ReconciliationService));
+            services.AddScoped(typeof(IBookkeepingDataStore), typeof(BookkeepingDataStore));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
          
 

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Bookkeeping.DataStore;
 using Bookkeeping.Model;
+using Bookkeeping.Service;
 
 namespace Bookkeeping.Controllers
 {
@@ -14,72 +15,51 @@ namespace Bookkeeping.Controllers
     [ApiController]
     public class ReconciliationsController : ControllerBase
     {
-        private readonly IRepository<Reconciliation> repoReconciliation;        
-        public ReconciliationsController(IRepository<Reconciliation> repoReconciliation)
+        private readonly IReconciliationService reconciliationService;        
+        public ReconciliationsController(IReconciliationService reconciliationService)
         {
-            this.repoReconciliation = repoReconciliation;            
+            this.reconciliationService = reconciliationService;            
         }
         
-        [HttpGet]
-        public async Task<IEnumerable<Reconciliation>> GetReconciliations()
-        {            
-            return await repoReconciliation.GetAll();
-        }
+        //[HttpGet]
+        //public async Task<IEnumerable<Reconciliation>> GetReconciliations()
+        //{            
+        //    return await repoReconciliation.GetAll();
+        //}
         
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Reconciliation>> GetReconciliation(int id)
-        {
-            var reconciliation = await repoReconciliation.Get(id);
-
-            if (reconciliation == null)
-            {
-                return NotFound();
-            }
-            return reconciliation;
-        }
+        //[HttpGet("{id}")]
+        //public async Task<Reconciliation> GetReconciliation(int id)
+        //{
+        //    var reconciliation = await repoReconciliation.Get(id);
+        //    return reconciliation;
+        //}
         
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutReconciliation(int id, Reconciliation reconciliation)
-        {
-            if (id != reconciliation.Id)
-            {
-                return BadRequest();
-            }
-
-            try
-            {
-                await repoReconciliation.Update(reconciliation);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                throw;
-            }
-
-            return NoContent();
-        }
+        //[HttpPut("{id}")]
+        //public async Task PutReconciliation(int id, Reconciliation reconciliation)
+        //{           
+        //    try
+        //    {
+        //        await repoReconciliation.Update(reconciliation);
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        throw;
+        //    }
+        //}
         
         [HttpPost]
-        public async Task<ActionResult<Reconciliation>> PostReconciliation(Reconciliation reconciliation)
+        public async Task PostReconciliation(Reconciliation reconciliation)
         {
-            await repoReconciliation.Add(reconciliation);         
-
-            return CreatedAtAction("GetReconciliation", new { id = reconciliation.Id }, reconciliation);
+            await reconciliationService.SaveReconciliation(reconciliation);
         }
 
-        // DELETE: api/Reconciliations/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteReconciliation(int id)
-        {
-            var reconciliation = await repoReconciliation.Get(id);
-            if (reconciliation == null)
-            {
-                return NotFound();
-            }
-
-            await repoReconciliation.Delete(reconciliation);          
-
-            return NoContent();
-        }
+        //// DELETE: api/Reconciliations/5
+        //[HttpDelete("{id}")]
+        //public async Task DeleteReconciliation(int id)
+        //{
+        //    var reconciliation = await repoReconciliation.Get(id);
+        //    await repoReconciliation.Delete(reconciliation);
+        //}
 
 
     }

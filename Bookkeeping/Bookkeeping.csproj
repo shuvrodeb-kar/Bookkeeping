@@ -28,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Bookkeeping.DataStore\Bookkeeping.DataStore.csproj" />
     <ProjectReference Include="..\Bookkeeping.Model\Bookkeeping.Model.csproj" />
+    <ProjectReference Include="..\Bookkeeping.Service\Bookkeeping.Service.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

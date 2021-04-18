@@ -18,6 +18,12 @@ export class BookkeepingService {
       catchError(this.handleError));
   }
 
+  save(monthId:number, year:number, reconciliationItemId: number, amount: number): Observable<any> {
+    return this._http.post('api/Reconciliations', { MonthId: monthId, Year: year, ReconciliationItemId: reconciliationItemId, Amount: amount }).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
   private extractData(res: Response) {
     return res;
   }

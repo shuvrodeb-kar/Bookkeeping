@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookkeeping.Model", "Bookke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookkeeping.DataStore", "Bookkeeping.DataStore\Bookkeeping.DataStore.csproj", "{1D1B0BFB-740C-41D6-B32F-114A14E9D035}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookkeeping.Service", "Bookkeeping.Service\Bookkeeping.Service.csproj", "{5EA182AD-0546-4C69-B51A-23EE02D45202}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1D1B0BFB-740C-41D6-B32F-114A14E9D035}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D1B0BFB-740C-41D6-B32F-114A14E9D035}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D1B0BFB-740C-41D6-B32F-114A14E9D035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA182AD-0546-4C69-B51A-23EE02D45202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EA182AD-0546-4C69-B51A-23EE02D45202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EA182AD-0546-4C69-B51A-23EE02D45202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EA182AD-0546-4C69-B51A-23EE02D45202}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

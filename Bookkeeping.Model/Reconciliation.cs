@@ -14,6 +14,10 @@ namespace Bookkeeping.Model
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [NotMapped]
+        public int MonthId { get; set; }
+        [NotMapped]
+        public int Year { get; set; }
         public int MonthYearMappingId { get; set; }
         public int ReconciliationItemId { get; set; }
         public decimal Amount { get; set; }
