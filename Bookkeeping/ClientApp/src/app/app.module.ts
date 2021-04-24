@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ReconciliationComponent } from './reconciliation/reconciliation.component';
+import { GridModule, PagerModule } from '@syncfusion/ej2-angular-grids';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ReconciliationComponent } from './reconciliation/reconciliation.compone
     RouterModule.forRoot([
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'reconciliation', component: ReconciliationComponent },
-], { relativeLinkResolution: 'legacy' })
+], { relativeLinkResolution: 'legacy' }),
+    GridModule, PagerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
